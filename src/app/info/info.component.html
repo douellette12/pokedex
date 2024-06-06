@@ -1,0 +1,61 @@
+<div class="card mt-4 shadow bg-white border-0 info">
+    <div class="card-body position-relative d-flex flex-column justify-content-around align-items-center text-center">
+        <img class="img-fluid position-absolute card__icon--info" src="{{ pokemon.sprites.other['official-artwork'].front_default }}" alt="">
+        <div class="mt-5 pt-5">
+            <p class="text-secondary mb-0">#{{pokemon.id}}</p>
+            <h4>{{ pokemon.name | titlecase }}</h4>
+            <div class="d-flex justify-content-center">
+                <span class="btn btn-sm fw-bold ms-2" [class]="type.type.name" *ngFor="let type of pokemon.types">{{ type.type.name | uppercase }}</span>
+            </div>
+        </div>
+        <div>
+            <h5>Pokédex Entry</h5>
+            <p>{{ speciesData?.flavor_text_entries[0].flavor_text }}</p>
+        </div>
+        <div class="w-100">
+            <h5>Abilities</h5>
+            <div class="row">
+                <div class="col" *ngFor="let ability of pokemon.abilities">
+                    <p class="text-start ability">{{ ability.ability.name | titlecase }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5>Height</h5>
+                    <p>{{ pokemon.height / 10 }}m</p>
+                </div>
+                <div class="col">
+                    <h5>Weight</h5>
+                    <p>{{ pokemon.weight /10 }}kg</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5>Weaknesses</h5>
+                    <div class="d-flex">
+
+                    </div>
+                </div>
+                <div class="col">
+                    <h5>Base Exp</h5>
+                    <p>{{ pokemon.base_experience }}</p>
+                </div>
+            </div>
+            <div class="row g-0">
+                <div class="col" *ngFor="let stat of pokemon.stats">
+                <p class="mb-0">{{ stat.stat.name | abbreviate }}</p>
+                <p>{{ stat.base_stat }}</p>
+                </div>
+            </div>
+            <h5>Evolution</h5>
+            <div class="row">
+                <div class="col">
+                    <button (click)="selectPokemon(pokemon.id - 1)"><i class="bi bi-chevron-left"></i></button>
+                </div>
+                <div class="col">
+                    <button (click)="selectPokemon(pokemon.id + 1)"><i class="bi bi-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
