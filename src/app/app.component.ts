@@ -15,6 +15,12 @@ import { NavigationComponent } from './navigation/navigation.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit{
+  //TODO:
+  //Fix the search to look at all pokemon not just the current page
+  //Add Filter features
+  //Fix Pagination
+  //Style info/detail sidebar
+
   title = 'pokedex';
   pokemon: any = {
     next: '',
